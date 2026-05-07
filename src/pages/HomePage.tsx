@@ -9,12 +9,12 @@ import GallerySection from "@/components/GallerySection";
 import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
 import FloatingParticles from "@/components/FloatingParticles";
-
+    
 export default function HomePage() {
   useEffect(() => {
     document.title = "Jai Jagannath Restaurant - Authentic Indian Cuisine | Nashik";
   }, []);
-
+    
   return (
     <div className="relative bg-background text-foreground">
       <FloatingParticles />
