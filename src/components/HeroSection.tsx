@@ -203,7 +203,7 @@ export default function HeroSection() {
           <div style={{ width: 1, height: 80, background: "linear-gradient(to bottom, rgba(212,168,67,0.5), transparent)" }} />
         </div>
 
-        {/* ── Hero content (fades out on scroll start) ─────────────────── */}
+        {   /* ── Hero content (fades out on scroll start) ─────────────────── */}
         <div className="hero-content-overlay"
           style={{ position: "absolute", inset: 0, zIndex: 20, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <div style={{ textAlign: "center", padding: "0 24px", maxWidth: 900, margin: "0 auto" }}>
