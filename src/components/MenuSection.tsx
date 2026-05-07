@@ -11,8 +11,8 @@ const categories = ["All", "Starters", "Main Course", "Breads", "Rice & Biryani"
 const menuItems = [
   // Starters
   { name: "Veg Soup", price: "₹60", category: "Starters", desc: "Fresh seasonal vegetables in a light aromatic broth." },
-  { name: "Papad Fry", price: "₹30", category: "Starters", desc: "Crispy lentil wafers with mint chutney." },
-  { name: "Aloo Tikki", price: "₹50", category: "Starters", desc: "Pan-fried spiced potato patties with tamarind sauce." },
+  { name: "Papad Fry", price: "₹40", category: "Starters", desc: "Crispy lentil wafers with mint chutney." },
+  { name: "Aloo Tikki", price: "₹60", category: "Starters", desc: "Pan-fried spiced potato patties with tamarind sauce." },
   { name: "Pakoda Platter", price: "₹80", category: "Starters", desc: "Assorted vegetable fritters with chutneys." },
   { name: "Veg Cutlet", price: "₹60", category: "Starters", desc: "Crispy bread-crumbed mixed vegetable patties." },
   // Main Course
