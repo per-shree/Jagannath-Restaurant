@@ -14,7 +14,7 @@ const specials = [
     image: "https://media.istockphoto.com/id/1437065088/photo/spicy-dal-makhani-or-butter-daal-served-in-a-dish-isolated-on-grey-background-top-view-of.jpg?s=612x612&w=0&k=20&c=lUVmyJkCz7XpD_IctxeI4pf4nkiifZ08Y_w97imzXPc=",
     accent: "#c0392b",
   },
-  {
+    {
     name: "Paneer Butter Masala",
     description: "Fresh cottage cheese in a rich tomato-butter gravy with aromatic spices.",
     price: "₹150",
@@ -22,7 +22,7 @@ const specials = [
     image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80&fit=crop",
     accent: "#e67e22",
   },
-  {
+    {
     name: "Special Thali",
     description: "A complete meal — dal, sabzi, roti, rice, pickle & papad. Pure satisfaction.",
     price: "₹80",
