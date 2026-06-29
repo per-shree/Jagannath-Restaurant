@@ -9,7 +9,7 @@ export default function FloatingParticles() {
   useEffect(() => {
     if (!containerRef.current) return;
     const particles = containerRef.current.querySelectorAll(".fp");
-
+   
     particles.forEach((p) => {
       const el = p as HTMLElement;
       const startX = Math.random() * window.innerWidth;
@@ -17,7 +17,7 @@ export default function FloatingParticles() {
       const duration = 8 + Math.random() * 12;
       const delay = Math.random() * 8;
       const size = 2 + Math.random() * 4;
-
+    
       gsap.set(el, { x: startX, y: startY, width: size, height: size, opacity: 0.4 + Math.random() * 0.4 });
       gsap.to(el, {
         y: -50,
