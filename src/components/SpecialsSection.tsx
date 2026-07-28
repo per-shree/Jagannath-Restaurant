@@ -125,30 +125,30 @@ export default function SpecialsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="specials" className="relative py-28 overflow-hidden bg-background">
+    <section ref={sectionRef} id="specials" className="relative py-28 overflow-hidden bg-[#FDFBF7]">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/10 to-transparent pointer-events-none" />
 
       {/* Decorative blobs */}
       <div className="absolute top-1/3 -left-32 w-96 h-96 rounded-full opacity-[0.04] blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, #D4A843, transparent)" }} />
+        style={{ background: "radial-gradient(circle, var(--gold), transparent)" }} />
       <div className="absolute bottom-1/3 -right-32 w-96 h-96 rounded-full opacity-[0.04] blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(circle, #c0392b, transparent)" }} />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="specials-header text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-amber-500/25 bg-amber-500/8">
-            <span className="text-amber-400 text-xs">✦</span>
-            <span className="text-amber-400 text-xs tracking-[0.3em] uppercase font-medium">Chef's Table</span>
-            <span className="text-amber-400 text-xs">✦</span>
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-gray-200 bg-gray-50">
+            <span className="text-[var(--gold)] text-xs">✦</span>
+            <span className="text-[var(--gold)] text-xs tracking-[0.3em] uppercase font-medium">Chef's Table</span>
+            <span className="text-[var(--gold)] text-xs">✦</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "#D4A843" }}>
+          <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "var(--gold)" }}>
             Today's Specials
           </h2>
           <div className="ornament-divider max-w-xs mx-auto my-4">
-            <span className="text-amber-500 text-sm">❖</span>
+            <span className="text-[var(--gold)] text-sm">❖</span>
           </div>
-          <p className="text-amber-100/55 max-w-xl mx-auto text-lg">
+          <p className="text-gray-600 max-w-xl mx-auto text-lg">
             Handpicked favourites that keep our guests coming back for more.
           </p>
         </div>
@@ -158,7 +158,7 @@ export default function SpecialsSection() {
           {specials.map((item, i) => (
             <div
               key={i}
-              className="special-card relative rounded-2xl border border-amber-500/15 overflow-hidden bg-card cursor-pointer select-none"
+              className="special-card relative rounded-2xl border border-gray-200 overflow-hidden bg-card cursor-pointer select-none"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Shine overlay */}
@@ -177,23 +177,23 @@ export default function SpecialsSection() {
 
                 {/* Tag badge on image */}
                 <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase z-10"
-                  style={{ background: "rgba(10,6,2,0.75)", color: "#D4A843", border: "1px solid rgba(212,168,67,0.4)", backdropFilter: "blur(8px)" }}>
+                  style={{ background: "rgba(255,255,255,0.9)", color: "var(--gold)", border: "1px solid rgba(212,168,67,0.4)", backdropFilter: "blur(8px)" }}>
                   {item.tag}
                 </div>
               </div>
 
               {/* Content */}
               <div className="p-5">
-                <h3 className="text-xl font-bold text-amber-200 mb-1.5" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h3 className="text-xl font-bold text-gray-900 mb-1.5" style={{ fontFamily: "'Playfair Display', serif" }}>
                   {item.name}
                 </h3>
-                <p className="text-amber-100/50 text-sm leading-relaxed mb-5">{item.description}</p>
+                <p className="text-gray-500 text-sm leading-relaxed mb-5">{item.description}</p>
 
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold price-tag-anim price-tag" style={{ fontFamily: "'Playfair Display', serif" }}>
                     {item.price}
                   </span>
-                  <button className="text-xs px-4 py-2 rounded-full border border-amber-500/30 text-amber-400 hover:bg-amber-500/15 transition-colors">
+                  <button className="text-xs px-4 py-2 rounded-full border border-gray-200 text-[var(--gold)] hover:bg-amber-500/15 transition-colors">
                     Order Now
                   </button>
                 </div>

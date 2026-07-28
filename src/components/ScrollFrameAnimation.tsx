@@ -136,7 +136,7 @@ export default function ScrollFrameAnimation() {
           className="absolute inset-0 pointer-events-none z-10"
           style={{
             background:
-              "radial-gradient(ellipse at center, transparent 50%, rgba(10,6,2,0.75) 100%)",
+              "radial-gradient(ellipse at center, transparent 50%, rgba(255,255,255,0.9) 100%)",
           }}
         />
 
@@ -144,13 +144,13 @@ export default function ScrollFrameAnimation() {
         <div
           className="absolute inset-x-0 top-0 h-28 pointer-events-none z-10"
           style={{
-            background: "linear-gradient(to bottom, rgba(10,6,2,1) 0%, transparent 100%)",
+            background: "linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, transparent 100%)",
           }}
         />
         <div
           className="absolute inset-x-0 bottom-0 h-28 pointer-events-none z-10"
           style={{
-            background: "linear-gradient(to top, rgba(10,6,2,1) 0%, transparent 100%)",
+            background: "linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 100%)",
           }}
         />
 
@@ -161,7 +161,7 @@ export default function ScrollFrameAnimation() {
           {/* Top label */}
           <div className="absolute top-8 left-1/2 -translate-x-1/2 text-center">
             <p
-              className="text-amber-400/70 text-xs tracking-[0.35em] uppercase mb-1"
+              className="text-[var(--gold)]/70 text-xs tracking-[0.35em] uppercase mb-1"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Scroll to experience
@@ -179,7 +179,7 @@ export default function ScrollFrameAnimation() {
               className="text-4xl md:text-6xl font-bold mb-3"
               style={{
                 fontFamily: "'Playfair Display', serif",
-                background: "linear-gradient(135deg, #F0C860 0%, #D4A843 50%, #A07830 100%)",
+                background: "linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -188,7 +188,7 @@ export default function ScrollFrameAnimation() {
               Paneer Drops Into Perfection
             </h2>
             <p
-              className="text-amber-100/60 text-base md:text-lg max-w-lg mx-auto"
+              className="text-gray-600 text-base md:text-lg max-w-lg mx-auto"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Fresh paneer meeting our signature curry — watch the magic unfold as you scroll.

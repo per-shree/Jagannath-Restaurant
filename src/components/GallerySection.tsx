@@ -2,10 +2,9 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
 gsap.registerPlugin(ScrollTrigger);
 
-// Real Unsplash food photography (not AI generated)
+// Real Unsplash food photography
 const galleryItems = [
   {
     url: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80&fit=crop",
@@ -85,23 +84,8 @@ export default function GallerySection() {
             },
           });
         }
-
-        // Hover tilt + image zoom
-        const overlay = el.querySelector(".gallery-overlay") as HTMLElement | null;
-        const label = el.querySelector(".gallery-label") as HTMLElement | null;
-
-        el.addEventListener("mouseenter", () => {
-          if (img) gsap.to(img, { scale: 1.1, duration: 0.6, ease: "power2.out" });
-          if (overlay) gsap.to(overlay, { opacity: 1, duration: 0.4 });
-          if (label) gsap.from(label, { y: 12, opacity: 0, duration: 0.35, ease: "power2.out" });
-          gsap.to(el, { y: -5, duration: 0.3, ease: "power2.out" });
-        });
-
-        el.addEventListener("mouseleave", () => {
-          if (img) gsap.to(img, { scale: 1, duration: 0.6, ease: "power2.out" });
-          if (overlay) gsap.to(overlay, { opacity: 0, duration: 0.4 });
-          gsap.to(el, { y: 0, duration: 0.4, ease: "power2.out" });
-        });
+        
+        // Removed GSAP hover listeners in favor of much more reliable Tailwind CSS group-hover classes
       });
 
       // Infinite horizontal marquee
@@ -123,22 +107,22 @@ export default function GallerySection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="gallery" className="relative py-28 overflow-hidden bg-background">
+    <section ref={sectionRef} id="gallery" className="relative py-28 overflow-hidden bg-[#FDFBF7]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="gallery-header text-center mb-14">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-amber-500/25 bg-amber-500/8">
-            <span className="text-amber-400 text-xs">✦</span>
-            <span className="text-amber-400 text-xs tracking-[0.3em] uppercase font-medium">Gallery</span>
-            <span className="text-amber-400 text-xs">✦</span>
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-gray-200 bg-gray-50">
+            <span className="text-[var(--gold)] text-xs">✦</span>
+            <span className="text-[var(--gold)] text-xs tracking-[0.3em] uppercase font-medium">Gallery</span>
+            <span className="text-[var(--gold)] text-xs">✦</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "#D4A843" }}>
+          <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "var(--gold)" }}>
             A Visual Feast
           </h2>
           <div className="ornament-divider max-w-xs mx-auto my-4">
-            <span className="text-amber-500 text-sm">❖</span>
+            <span className="text-[var(--gold)] text-sm">❖</span>
           </div>
-          <p className="text-amber-100/55 max-w-xl mx-auto">
+          <p className="text-gray-600 max-w-xl mx-auto">
             Every dish tells a story — crafted with tradition, served with love.
           </p>
         </div>
@@ -148,29 +132,29 @@ export default function GallerySection() {
           {galleryItems.map((item, i) => (
             <div
               key={i}
-              className={`gallery-item relative overflow-hidden rounded-2xl cursor-pointer group ${item.span}`}
+              className={`gallery-item relative overflow-hidden rounded-2xl cursor-pointer group transition-transform duration-500 hover:-translate-y-1.5 hover:shadow-xl ${item.span}`}
             >
               <img
                 src={item.url}
                 alt={item.label}
-                className="gallery-img absolute inset-0 w-full h-full object-cover"
+                className="gallery-img absolute inset-0 w-full h-[125%] object-cover transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
               />
 
-              {/* Dark overlay */}
-              <div className="gallery-overlay absolute inset-0 opacity-0"
-                style={{ background: "linear-gradient(to top, rgba(10,6,2,0.88) 0%, rgba(10,6,2,0.2) 60%, transparent 100%)" }}>
-                <div className="gallery-label absolute bottom-0 left-0 right-0 p-5">
-                  <p className="text-amber-300 font-bold text-lg" style={{ fontFamily: "'Playfair Display', serif" }}>{item.label}</p>
-                  <p className="text-amber-100/60 text-xs tracking-wider uppercase">Jai Jagannath Restaurant</p>
+              {/* Dark overlay for hover using tailwind classes instead of GSAP for better reliability */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)" }}>
+                <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-75">
+                  <p className="text-white font-bold text-xl mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>{item.label}</p>
+                  <p className="text-[var(--gold)] text-xs tracking-wider uppercase font-semibold">Jai Jagannath Restaurant</p>
                 </div>
               </div>
 
-              {/* Always-visible subtle vignette */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+              {/* Always-visible subtle vignette so it doesn't look flat before hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
 
               {/* Gold border on hover */}
-              <div className="absolute inset-0 rounded-2xl border-2 border-amber-500/0 group-hover:border-amber-500/40 transition-all duration-500 pointer-events-none" />
+              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[var(--gold)]/50 transition-colors duration-500 pointer-events-none" />
             </div>
           ))}
         </div>
@@ -183,14 +167,14 @@ export default function GallerySection() {
           {[...marqueeImages, ...marqueeImages].map((src, i) => (
             <div key={i} className="flex-shrink-0 w-56 h-36 rounded-xl overflow-hidden relative">
               <img src={src} alt="Indian food" className="w-full h-full object-cover" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
             </div>
           ))}
         </div>
       </div>
 
       {/* Bottom label */}
-      <p className="text-center text-amber-100/25 text-xs tracking-widest uppercase mt-6">
+      <p className="text-center text-gray-500 text-xs tracking-widest uppercase mt-8 font-medium">
         ✦ Authentic Indian Cuisine · MG Road, Shalimar, Nashik ✦
       </p>
     </section>

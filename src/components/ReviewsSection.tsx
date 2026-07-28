@@ -118,53 +118,53 @@ export default function ReviewsSection() {
   };
 
   return (
-    <section ref={sectionRef} id="reviews" className="relative py-28 overflow-hidden bg-background">
+    <section ref={sectionRef} id="reviews" className="relative py-28 overflow-hidden bg-[#FDFBF7]">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/5 to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="reviews-header text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-amber-500/25 bg-amber-500/8">
-            <span className="text-amber-400 text-xs">✦</span>
-            <span className="text-amber-400 text-xs tracking-[0.3em] uppercase font-medium">Guest Reviews</span>
-            <span className="text-amber-400 text-xs">✦</span>
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-gray-200 bg-gray-50">
+            <span className="text-[var(--gold)] text-xs">✦</span>
+            <span className="text-[var(--gold)] text-xs tracking-[0.3em] uppercase font-medium">Guest Reviews</span>
+            <span className="text-[var(--gold)] text-xs">✦</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "#D4A843" }}>
+          <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "var(--gold)" }}>
             What Our Guests Say
           </h2>
           <div className="ornament-divider max-w-xs mx-auto my-4">
-            <span className="text-amber-500 text-sm">❖</span>
+            <span className="text-[var(--gold)] text-sm">❖</span>
           </div>
         </div>
 
         
         {/* Summary */}
-        <div className="reviews-summary flex flex-col sm:flex-row items-center justify-center gap-10 mb-14 p-8 rounded-2xl border border-amber-500/15 bg-card max-w-2xl mx-auto">
+        <div className="reviews-summary flex flex-col sm:flex-row items-center justify-center gap-10 mb-14 p-8 rounded-2xl border border-gray-200 bg-card max-w-2xl mx-auto">
           <div className="text-center">
             <p className="text-6xl font-bold gold-text" style={{ fontFamily: "'Playfair Display', serif" }}>3.9</p>
             <div className="flex gap-1 justify-center my-2 stars">
               {[1,2,3,4].map(i => <Star key={i} size={18} fill="currentColor" />)}
               <Star size={18} fill="none" strokeWidth={1.5} />
             </div>
-            <p className="text-amber-100/50 text-sm">Based on 993 reviews</p>
+            <p className="text-gray-500 text-sm">Based on 993 reviews</p>
           </div>
-          <div className="w-px h-16 bg-amber-500/20 hidden sm:block" />
+          <div className="w-px h-16 bg-gray-200 hidden sm:block" />
           <div className="grid grid-cols-2 gap-4 text-center">
             <div>
-              <p className="text-2xl font-bold text-amber-400">993+</p>
-              <p className="text-amber-100/50 text-xs">Google Reviews</p>
+              <p className="text-2xl font-bold text-[var(--gold)]">993+</p>
+              <p className="text-gray-500 text-xs">Google Reviews</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-amber-400">1139+</p>
-              <p className="text-amber-100/50 text-xs">Justdial Reviews</p>
+              <p className="text-2xl font-bold text-[var(--gold)]">1139+</p>
+              <p className="text-gray-500 text-xs">Justdial Reviews</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-amber-400">3.8★</p>
-              <p className="text-amber-100/50 text-xs">Justdial Rating</p>
+              <p className="text-2xl font-bold text-[var(--gold)]">3.8★</p>
+              <p className="text-gray-500 text-xs">Justdial Rating</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-amber-400">10+</p>
-              <p className="text-amber-100/50 text-xs">Years Serving</p>
+              <p className="text-2xl font-bold text-[var(--gold)]">10+</p>
+              <p className="text-gray-500 text-xs">Years Serving</p>
             </div>
           </div>
         </div>
@@ -172,22 +172,22 @@ export default function ReviewsSection() {
         {/* Review Cards */}
         <div ref={cardsRef} className="review-cards-row grid md:grid-cols-3 gap-6 mb-10">
           {getVisible().map((r, i) => (
-            <div key={i} className="review-card menu-card p-6 rounded-2xl border border-amber-500/15 bg-card flex flex-col">
+            <div key={i} className="review-card menu-card p-6 rounded-2xl border border-gray-200 bg-card flex flex-col">
               {/* Header */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-amber-950 text-sm flex-shrink-0"
-                  style={{ background: "linear-gradient(135deg, #D4A843, #A07830)" }}>
+                  style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-dark))" }}>
                   {r.avatar}
                 </div>
                 <div>
-                  <p className="text-amber-200 font-semibold text-sm">{r.name}</p>
-                  <p className="text-amber-100/40 text-xs">{r.date} · {r.source}</p>
+                  <p className="text-gray-900 font-semibold text-sm">{r.name}</p>
+                  <p className="text-gray-600 text-xs">{r.date} · {r.source}</p>
                 </div>
               </div>
 
               <StarRating rating={r.rating} />
 
-              <p className="text-amber-100/65 text-sm leading-relaxed mt-3 flex-1">
+              <p className="text-gray-600 text-sm leading-relaxed mt-3 flex-1">
                 "{r.review}"
               </p>
             </div>
@@ -198,7 +198,7 @@ export default function ReviewsSection() {
         <div className="flex items-center justify-center gap-4">
           <button
             onClick={prev}
-            className="w-10 h-10 rounded-full border border-amber-500/30 text-amber-400 flex items-center justify-center hover:bg-amber-500/15 transition-colors"
+            className="w-10 h-10 rounded-full border border-gray-200 text-[var(--gold)] flex items-center justify-center hover:bg-amber-500/15 transition-colors"
           >
             <ChevronLeft size={18} />
           </button>
@@ -213,7 +213,7 @@ export default function ReviewsSection() {
           </div>
           <button
             onClick={next}
-            className="w-10 h-10 rounded-full border border-amber-500/30 text-amber-400 flex items-center justify-center hover:bg-amber-500/15 transition-colors"
+            className="w-10 h-10 rounded-full border border-gray-200 text-[var(--gold)] flex items-center justify-center hover:bg-amber-500/15 transition-colors"
           >
             <ChevronRight size={18} />
           </button>

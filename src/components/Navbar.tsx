@@ -59,18 +59,18 @@ export default function Navbar() {
     <nav
       ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "nav-glass py-3" : "py-5 bg-transparent"
+        scrolled ? "nav-glass py-3 shadow-sm" : "py-5 bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <div className="nav-logo flex items-center gap-3 cursor-pointer" onClick={() => handleNavClick("#home")}>
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-amber-700 flex items-center justify-center shadow-lg shadow-amber-900/40">
-            <span className="text-lg font-bold text-amber-950">ॐ</span>
+          <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-md" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-dark))" }}>
+            <span className="text-lg font-bold text-white">ॐ</span>
           </div>
           <div>
-            <p className="text-xs tracking-[0.25em] uppercase text-amber-500/80 leading-none font-light">Jai</p>
-            <p className="text-lg font-bold leading-tight" style={{ fontFamily: "'Playfair Display', serif", color: "#D4A843" }}>Jagannath</p>
+            <p className="text-xs tracking-[0.25em] uppercase leading-none font-semibold" style={{ color: "var(--gold)" }}>Jai</p>
+            <p className="text-lg font-bold leading-tight text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>Jagannath</p>
           </div>
         </div>
 
@@ -80,7 +80,8 @@ export default function Navbar() {
             <button
               key={link.label}
               onClick={() => handleNavClick(link.href)}
-              className="nav-item underline-gold text-sm tracking-wider text-amber-100/80 hover:text-amber-400 transition-colors duration-300 uppercase font-medium"
+              className={`nav-item underline-gold text-sm tracking-wider transition-colors duration-300 uppercase font-semibold ${scrolled ? 'text-gray-800' : 'text-white drop-shadow-md'}`}
+              style={scrolled ? {} : { textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
             >
               {link.label}
             </button>
@@ -93,7 +94,7 @@ export default function Navbar() {
             href="https://wa.me/919975260955?text=Hello%20Jai%20Jagannath%20Restaurant!%20I%20would%20like%20to%20reserve%20a%20table.%0A%0ADate%3A%20%0ATime%3A%20%0ATable%20No%3A%20%0AGuests%3A%20"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-gold px-5 py-2 rounded-full text-sm inline-block"
+            className="btn-gold px-5 py-2 rounded-full text-sm inline-block shadow-md"
           >
             Reserve Table
           </a>
@@ -101,7 +102,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-amber-400 p-2"
+          className={`md:hidden p-2 ${scrolled ? 'text-gray-800' : 'text-white drop-shadow-md'}`}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -113,14 +114,14 @@ export default function Navbar() {
         className={`md:hidden transition-all duration-500 overflow-hidden ${
           mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
-        style={{ background: "rgba(10,6,2,0.97)", borderTop: "1px solid rgba(212,168,67,0.2)" }}
+        style={{ background: "#FDFBF7", borderTop: "1px solid var(--border)", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}
       >
         <div className="px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
             <button
               key={link.label}
               onClick={() => handleNavClick(link.href)}
-              className="text-left text-amber-100/80 hover:text-amber-400 transition-colors text-sm tracking-widest uppercase py-1"
+              className="text-left text-gray-800 hover:text-[var(--gold)] transition-colors text-sm tracking-widest uppercase py-2 font-semibold border-b border-gray-100"
             >
               {link.label}
             </button>
@@ -129,7 +130,7 @@ export default function Navbar() {
             href="https://wa.me/919975260955?text=Hello%20Jai%20Jagannath%20Restaurant!%20I%20would%20like%20to%20reserve%20a%20table.%0A%0ADate%3A%20%0ATime%3A%20%0ATable%20No%3A%20%0AGuests%3A%20"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-gold px-5 py-2 rounded-full text-sm w-full mt-2 inline-block text-center"
+            className="btn-gold px-5 py-3 rounded-full text-sm w-full mt-2 inline-block text-center shadow-md"
           >
             Reserve Table
           </a>
