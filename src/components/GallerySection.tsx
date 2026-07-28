@@ -38,16 +38,16 @@ const galleryItems = [
   },
 ];
 
-// Marquee strip images
+// Marquee strip images - all confirmed pure vegetarian
 const marqueeImages = [
-  "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=70&fit=crop",
-  "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&q=70&fit=crop",
-  "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400&q=70&fit=crop",
-  "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&q=70&fit=crop",
-  "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=70&fit=crop",
-  "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=400&q=70&fit=crop",
-  "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=70&fit=crop",
-  "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=400&q=70&fit=crop",
+  "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=70&fit=crop",   // Indian Thali
+  "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&q=70&fit=crop",   // Chole Bhature
+  "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400&q=70&fit=crop",   // Paneer Butter Masala
+  "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&q=70&fit=crop",   // Samosas
+  "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=70&fit=crop",   // Paneer Tikka
+  "https://images.unsplash.com/photo-1642821369314-100fece91d3c?w=400&q=70&fit=crop",   // Kadai Paneer
+  "https://media.istockphoto.com/id/1437065088/photo/spicy-dal-makhani-or-butter-daal-served-in-a-dish-isolated-on-grey-background-top-view-of.jpg?s=612x612&w=0&k=20&c=lUVmyJkCz7XpD_IctxeI4pf4nkiifZ08Y_w97imzXPc=", // Dal Makhani
+  "https://media.istockphoto.com/id/521802535/photo/gulab-jamun-12.webp?a=1&b=1&s=612x612&w=0&k=20&c=Mri9HwChsS3eLZYXOMVHGL49Y3gLNhD-Ez-QIYeEfwQ=", // Gulab Jamun
 ];
 
 export default function GallerySection() {

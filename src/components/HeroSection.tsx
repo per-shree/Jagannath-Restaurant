@@ -22,12 +22,12 @@ export default function HeroSection() {
     return () => ctx.revert();
   }, []);
 
-  // 4 high-end, professional, full-bleed images of Indian cuisine
+  // 4 high-end, professional, full-bleed images of pure vegetarian Indian cuisine
   const backgroundImages = [
-    "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80", // Premium Biryani setup
-    "https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80", // Vibrant Paneer Tikka
-    "https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80", // Rich Curry Bowl
-    "https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80", // Samosas and chutneys
+    "https://images.unsplash.com/photo-1596797038530-2c107229654b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80", // Chole Bhature - pure veg
+    "https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80", // Vibrant Paneer Tikka - pure veg
+    "https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80", // Indian Thali - pure veg
+    "https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80", // Samosas and chutneys - pure veg
   ];
 
   // Slideshow interval
