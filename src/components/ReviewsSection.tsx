@@ -118,9 +118,9 @@ export default function ReviewsSection() {
   };
 
   return (
-    <section ref={sectionRef} id="reviews" className="relative py-28 overflow-hidden bg-cream">
+    <section ref={sectionRef} id="reviews" className="relative py-28 overflow-hidden bg-ivory">
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="reviews-header text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-border-soft bg-ivory">
@@ -216,6 +216,13 @@ export default function ReviewsSection() {
             <ChevronRight size={18} />
           </button>
         </div>
+      </div>
+
+      {/* Wave Divider at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+        <svg className="relative block w-full h-10 md:h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,40 Q400,100 800,20 T1200,60 L1200,120 L0,120 Z" fill="var(--color-cream)" />
+        </svg>
       </div>
     </section>
   );

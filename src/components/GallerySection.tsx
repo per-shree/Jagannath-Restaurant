@@ -175,6 +175,13 @@ export default function GallerySection() {
       <p className="text-center text-text-sec text-xs tracking-widest uppercase mt-8 font-medium">
         ✦ Authentic Indian Cuisine · MG Road, Shalimar, Nashik ✦
       </p>
+
+      {/* Wave Divider at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+        <svg className="relative block w-full h-10 md:h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,50 C200,10 400,90 600,30 C800,-20 1000,80 1200,40 L1200,120 L0,120 Z" fill="var(--color-ivory)" />
+        </svg>
+      </div>
     </section>
   );
 }

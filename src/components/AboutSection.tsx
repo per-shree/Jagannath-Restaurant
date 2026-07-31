@@ -155,6 +155,13 @@ export default function AboutSection() {
           </div>
         </div>
       </div>
+
+      {/* Wave Divider at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+        <svg className="relative block w-full h-10 md:h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,40 Q300,120 600,40 T1200,40 L1200,120 L0,120 Z" fill="var(--color-ivory)" />
+        </svg>
+      </div>
     </section>
   );
 }
