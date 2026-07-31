@@ -158,8 +158,15 @@ export default function GallerySection() {
         </div>
       </div>
 
+      {/* Wave Divider before Marquee Strip */}
+      <div className="w-full overflow-hidden leading-none mt-16 mb-6 pointer-events-none">
+        <svg className="relative block w-full h-8 md:h-12" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,0 C150,80 350,-30 500,40 C650,120 900,10 1200,30 L1200,120 L0,120 Z" fill="var(--color-ivory)" opacity="0.6" />
+        </svg>
+      </div>
+
       {/* Full-width Marquee Strip */}
-      <div ref={marqueeRef} className="mt-16 overflow-hidden select-none">
+      <div ref={marqueeRef} className="overflow-hidden select-none py-4 bg-ivory/40">
         <div className="marquee-track flex gap-4" style={{ width: "max-content" }}>
           {/* Double for seamless loop */}
           {[...marqueeImages, ...marqueeImages].map((src, i) => (
@@ -172,14 +179,14 @@ export default function GallerySection() {
       </div>
 
       {/* Bottom label */}
-      <p className="text-center text-text-sec text-xs tracking-widest uppercase mt-8 font-medium">
+      <p className="text-center text-text-sec text-xs tracking-widest uppercase mt-6 mb-12 font-medium">
         ✦ Authentic Indian Cuisine · MG Road, Shalimar, Nashik ✦
       </p>
 
-      {/* Wave Divider at bottom */}
+      {/* Wave Divider after Marquee Strip (Right before Find Us / LocationSection) */}
       <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-        <svg className="relative block w-full h-10 md:h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M0,50 C200,10 400,90 600,30 C800,-20 1000,80 1200,40 L1200,120 L0,120 Z" fill="var(--color-ivory)" />
+        <svg className="relative block w-full h-12 md:h-20" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,40 Q300,110 600,30 T1200,50 L1200,120 L0,120 Z" fill="var(--color-ivory)" />
         </svg>
       </div>
     </section>
