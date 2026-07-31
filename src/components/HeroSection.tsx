@@ -39,7 +39,7 @@ export default function HeroSection() {
   }, [backgroundImages.length]);
 
   return (
-    <div ref={heroRef} id="home" className="relative w-full h-screen overflow-hidden bg-text-main">
+    <div ref={heroRef} id="home" className="relative w-full min-h-screen overflow-hidden bg-text-main flex flex-col">
       
       {/* Background Slideshow */}
       {backgroundImages.map((src, idx) => (
@@ -56,11 +56,11 @@ export default function HeroSection() {
       ))}
 
       {/* Soft overlay gradient for text readability */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-text-main/80 via-text-main/40 to-text-main/80" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-text-main/90 via-text-main/50 to-text-main/90" />
 
       {/* Hero Content */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center">
-        <div className="text-center px-6 max-w-4xl mx-auto mt-20">
+      <div className="relative z-20 flex-1 flex flex-col items-center justify-center pt-28 md:pt-36 pb-16 px-6">
+        <div className="text-center max-w-4xl mx-auto my-auto">
 
           {/* Pure-veg badge */}
           <div className="hero-label flex items-center justify-center gap-3 mb-8">
