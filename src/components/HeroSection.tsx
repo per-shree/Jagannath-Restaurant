@@ -136,8 +136,15 @@ export default function HeroSection() {
         </div>
       </div>
 
+      {/* Organic Wave Divider at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+        <svg className="relative block w-full h-12 md:h-20" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,0 C150,90 350,-40 500,50 C650,140 900,10 1200,40 L1200,120 L0,120 Z" fill="var(--color-cream)" />
+        </svg>
+      </div>
+
       {/* Bouncing chevron */}
-      <button className="scroll-arrow absolute bottom-8 left-1/2 -translate-x-1/2 z-30 text-cream/70 hover:text-cream transition-colors p-2"
+      <button className="scroll-arrow absolute bottom-12 left-1/2 -translate-x-1/2 z-30 text-cream/70 hover:text-cream transition-colors p-2"
         onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}
       >
         <ChevronDown size={32} />

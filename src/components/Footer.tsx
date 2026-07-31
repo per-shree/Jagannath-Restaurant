@@ -8,7 +8,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-border-soft pt-6 pb-4 overflow-hidden bg-cream">
+    <footer className="relative pt-6 pb-4 overflow-hidden bg-cream">
       
       {/* Wavy Flowing Background Animation covering the whole footer */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>

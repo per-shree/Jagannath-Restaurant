@@ -38,9 +38,9 @@ export default function LocationSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="contact" className="relative py-28 overflow-hidden bg-cream">
+    <section ref={sectionRef} id="contact" className="relative py-28 overflow-hidden bg-ivory">
 
-      <div className="max-w-7xl mx-auto px-6 relative">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="location-header text-center mb-14">
           <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-border-soft bg-ivory">
@@ -159,6 +159,13 @@ export default function LocationSection() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Wave Divider at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+        <svg className="relative block w-full h-10 md:h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,40 Q300,110 600,30 T1200,50 L1200,120 L0,120 Z" fill="var(--color-cream)" />
+        </svg>
       </div>
     </section>
   );

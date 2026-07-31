@@ -174,6 +174,13 @@ export default function MenuSection() {
         </p>
       </div>
 
+      {/* Wave Divider at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+        <svg className="relative block w-full h-10 md:h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,30 Q300,-30 600,50 T1200,30 L1200,120 L0,120 Z" fill="var(--color-ivory)" />
+        </svg>
+      </div>
+
       {/* 3D Dish Viewer Modal */}
       {selected3D && (
         <Dish3DViewer dishName={selected3D} onClose={() => setSelected3D(null)} />
