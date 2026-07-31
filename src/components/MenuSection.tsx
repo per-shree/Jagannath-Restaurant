@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Leaf } from "lucide-react";
+import { Leaf, Maximize2 } from "lucide-react";
+import Dish3DViewer, { DISH_3D_NAMES } from "./Dish3DViewer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,6 +59,7 @@ const menuItems = [
 export default function MenuSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState("All");
+  const [selected3D, setSelected3D] = useState<string | null>(null);
 
   const filtered = active === "All" ? menuItems : menuItems.filter(i => i.category === active);
 
@@ -79,31 +81,29 @@ export default function MenuSection() {
   }, [active]);
 
   return (
-    <section ref={sectionRef} id="menu" className="relative py-28 overflow-hidden bg-[#FDFBF7] bg-pattern-dots">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
-
+    <section ref={sectionRef} id="menu" className="relative py-28 overflow-hidden bg-cream">
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Header */}
         <div className="menu-header text-center mb-12">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-gray-200 bg-gray-50">
-            <span className="text-[var(--gold)] text-xs">✦</span>
-            <span className="text-[var(--gold)] text-xs tracking-[0.3em] uppercase font-medium">Our Menu</span>
-            <span className="text-[var(--gold)] text-xs">✦</span>
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-border-soft bg-ivory">
+            <span className="text-saffron text-xs">✦</span>
+            <span className="text-saffron text-xs tracking-[0.3em] uppercase font-medium">Our Menu</span>
+            <span className="text-saffron text-xs">✦</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "var(--gold)" }}>
+          <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4 text-maroon">
             A Feast for the Soul
           </h2>
           <div className="ornament-divider max-w-xs mx-auto my-4">
-            <span className="text-[var(--gold)] text-sm">❖</span>
+            <span className="text-saffron text-sm">❖</span>
           </div>
 
           {/* Pure Veg badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500/40 bg-green-500/8 mb-4">
-            <Leaf size={13} className="text-green-400" />
-            <span className="text-green-400 text-xs font-semibold tracking-wider uppercase">100% Pure Vegetarian</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500 bg-green-50 mb-4">
+            <Leaf size={13} className="text-green-600" />
+            <span className="text-green-700 text-xs font-semibold tracking-wider uppercase">100% Pure Vegetarian</span>
           </div>
 
-          <p className="text-gray-600 max-w-xl mx-auto block mt-3">
+          <p className="text-text-sec max-w-xl mx-auto block mt-3">
             From humble dal to rich biryanis — a complete pure veg spread at honest prices.
           </p>
         </div>
@@ -115,8 +115,8 @@ export default function MenuSection() {
               key={cat}
               onClick={() => setActive(cat)}
               className={`px-5 py-2 rounded-full text-sm font-medium tracking-wide transition-all duration-300 ${active === cat
-                  ? "btn-gold"
-                  : "border border-gray-200 text-gray-900/70 hover:border-gray-300 hover:text-gray-900"
+                  ? "btn-maroon"
+                  : "border border-border-soft text-text-sec hover:border-text-sec hover:text-text-main"
                 }`}
             >
               {cat}
@@ -126,31 +126,58 @@ export default function MenuSection() {
 
         {/* Menu Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filtered.map((item, i) => (
-            <div key={`${item.name}-${i}`} className="menu-item-card menu-card flex items-start gap-4 p-5 rounded-2xl border border-gray-200 bg-card">
-              {/* Pure veg green dot */}
-              <div className="mt-1 flex-shrink-0">
-                <div className="w-4 h-4 rounded-sm border-2 border-green-500 flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-green-500" />
+          {filtered.map((item, i) => {
+            const has3D = DISH_3D_NAMES.includes(item.name);
+            return (
+              <div
+                key={`${item.name}-${i}`}
+                className={`menu-item-card menu-card flex items-start gap-4 p-5 rounded-md${has3D ? " border-saffron/40 bg-saffron/5" : ""}`}
+              >
+                {/* Pure veg green dot */}
+                <div className="mt-1 flex-shrink-0">
+                  <div className="w-4 h-4 rounded-sm border-2 border-green-500 flex items-center justify-center">
+                    <div className="w-2 h-2 rounded-full bg-green-500" />
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-2">
+                    <h4 className="font-semibold text-text-main text-base leading-tight font-serif">
+                      {item.name}
+                    </h4>
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <span className="text-maroon text-base font-bold">{item.price}</span>
+                      {has3D && (
+                        <button
+                          className="menu-3d-btn"
+                          onClick={() => setSelected3D(item.name)}
+                          title="View in 3D"
+                          aria-label={`View ${item.name} in 3D`}
+                        >
+                          <Maximize2 size={12} />
+                          <span>3D</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-text-sec text-xs mt-1 leading-relaxed">{item.desc}</p>
+                  {has3D && (
+                    <p className="menu-3d-hint">✦ Click 3D to explore this dish interactively</p>
+                  )}
                 </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between gap-2">
-                  <h4 className="font-semibold text-gray-900 text-base leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
-                    {item.name}
-                  </h4>
-                  <span className="price-tag text-base font-bold flex-shrink-0">{item.price}</span>
-                </div>
-                <p className="text-gray-600 text-xs mt-1 leading-relaxed">{item.desc}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        <p className="text-center text-gray-600 text-sm mt-8 italic">
+        <p className="text-center text-text-sec text-sm mt-8 italic">
           * 100% Pure Vegetarian. All prices inclusive of taxes.
         </p>
       </div>
+
+      {/* 3D Dish Viewer Modal */}
+      {selected3D && (
+        <Dish3DViewer dishName={selected3D} onClose={() => setSelected3D(null)} />
+      )}
     </section>
   );
 }

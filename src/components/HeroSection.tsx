@@ -11,7 +11,7 @@ export default function HeroSection() {
     const ctx = gsap.context(() => {
       gsap.timeline({ delay: 0.2 })
         .from(".hero-label", { y: 28, opacity: 0, duration: 1, ease: "power3.out" })
-        .from(".hero-title-line", { y: 120, opacity: 0, stagger: 0.2, duration: 1.2, ease: "power4.out" }, "-=0.5")
+        .from(".hero-title-line", { y: 60, opacity: 0, stagger: 0.2, duration: 1.2, ease: "power4.out" }, "-=0.5")
         .from(".hero-subtitle", { y: 28, opacity: 0, stagger: 0.12, duration: 0.9, ease: "power3.out" }, "-=0.4")
         .from(".hero-cta-group", { y: 32, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.3")
         .from(".hero-stats", { y: 20, opacity: 0, stagger: 0.1, duration: 0.6, ease: "power3.out" }, "-=0.4");
@@ -39,9 +39,9 @@ export default function HeroSection() {
   }, [backgroundImages.length]);
 
   return (
-    <div ref={heroRef} id="home" className="relative w-full h-[100vh] overflow-hidden bg-[#111]">
+    <div ref={heroRef} id="home" className="relative w-full h-screen overflow-hidden bg-text-main">
       
-      {/* Background Slideshow with Glow */}
+      {/* Background Slideshow */}
       {backgroundImages.map((src, idx) => (
         <img
           key={src}
@@ -49,111 +49,98 @@ export default function HeroSection() {
           alt={`Background ${idx + 1}`}
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
           style={{ 
-            opacity: idx === currentImageIndex ? 0.8 : 0, // Much brighter images
-            filter: idx === currentImageIndex ? "brightness(1.1) contrast(1.1) saturate(1.1)" : "none", // Add a vibrant "glow" to the image colors
+            opacity: idx === currentImageIndex ? 0.8 : 0, 
             zIndex: 1 
           }}
         />
       ))}
 
-      {/* A warm central glow to make the center of the image pop instead of darkening it */}
-      <div style={{
-        position: "absolute", inset: 0, pointerEvents: "none", zIndex: 5,
-        background: "radial-gradient(circle at center, rgba(255, 230, 180, 0.15) 0%, transparent 60%)",
-        mixBlendMode: "screen"
-      }} />
-
-      {/* Very soft dark gradient only at the top so navbar text remains visible, and at bottom for stats */}
-      <div style={{
-        position: "absolute", inset: 0, pointerEvents: "none", zIndex: 10,
-        background: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 15%, transparent 85%, rgba(0,0,0,0.5) 100%)"
-      }} />
+      {/* Soft overlay gradient for text readability */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-text-main/80 via-text-main/40 to-text-main/80" />
 
       {/* Hero Content */}
-      <div className="hero-content-overlay"
-        style={{ position: "absolute", inset: 0, zIndex: 20, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ textAlign: "center", padding: "0 24px", maxWidth: 900, margin: "0 auto", marginTop: "80px" }}>
+      <div className="absolute inset-0 z-20 flex items-center justify-center">
+        <div className="text-center px-6 max-w-4xl mx-auto mt-20">
 
           {/* Pure-veg badge */}
-          <div className="hero-label" style={{ display: "inline-flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-            <div style={{ height: 1, width: 40, background: "rgba(255,255,255,0.6)" }} />
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <div style={{ width: 16, height: 16, borderRadius: 2, border: "2px solid #4ade80", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(34, 197, 94, 0.3)" }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#4ade80" }} />
+          <div className="hero-label flex items-center justify-center gap-3 mb-8">
+            <div className="h-px w-10 bg-cream/40" />
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded-sm border border-green-500 flex items-center justify-center bg-green-500/10">
+                <div className="w-2 h-2 rounded-full bg-green-500" />
               </div>
-              <span style={{ color: "#fff", fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 600, textShadow: "0 0 10px rgba(0,0,0,0.3)" }}>Pure Veg · Nashik</span>
+              <span className="text-cream text-xs tracking-[0.2em] uppercase font-semibold">Pure Veg · Nashik</span>
             </div>
-            <div style={{ height: 1, width: 40, background: "rgba(255,255,255,0.6)" }} />
+            <div className="h-px w-10 bg-cream/40" />
            </div>
 
-          {/* Text with soft diffuse glows instead of harsh outlines */}
-          <div style={{ overflow: "hidden", marginBottom: 8 }}>
-            <h1 className="hero-title-line" style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontSize: "clamp(3.5rem,10vw,7rem)", fontWeight: 700, lineHeight: 1.1, margin: 0, textShadow: "0 0 40px rgba(255,255,255,0.5), 0 0 80px rgba(255,255,255,0.2)" }}>Jai</h1>
+          {/* Title */}
+          <div className="overflow-hidden mb-2">
+            <h1 className="hero-title-line font-serif text-cream text-5xl md:text-7xl lg:text-[7rem] font-bold leading-tight drop-shadow-lg">
+              Jai
+            </h1>
           </div>
-          <div style={{ overflow: "hidden", marginBottom: 24 }}>
-            <h1 className="hero-title-line" style={{ fontFamily: "'Playfair Display', serif", color: "var(--gold)", fontSize: "clamp(3.5rem,10vw,7rem)", fontWeight: 700, lineHeight: 1.1, margin: 0, textShadow: "0 0 40px rgba(212,168,67,0.6), 0 0 80px rgba(212,168,67,0.3)" }}>Jagannath</h1>
-          </div>
-
-          <div className="hero-subtitle" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 16 }}>
-            <div style={{ height: 1, width: 64, background: "linear-gradient(to right, transparent, rgba(255,255,255,0.8))" }} />
-            <span style={{ color: "var(--gold)", fontSize: 18, textShadow: "0 0 15px rgba(212,168,67,0.8)" }}>❖</span>
-            <span style={{ color: "#fff", fontSize: 13, letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 600, textShadow: "0 0 20px rgba(255,255,255,0.6)" }}>Authentic Pure Veg Cuisine</span>
-            <span style={{ color: "var(--gold)", fontSize: 18, textShadow: "0 0 15px rgba(212,168,67,0.8)" }}>❖</span>
-            <div style={{ height: 1, width: 64, background: "linear-gradient(to left, transparent, rgba(255,255,255,0.8))" }} />
+          <div className="overflow-hidden mb-8">
+            <h1 className="hero-title-line font-serif text-saffron text-5xl md:text-7xl lg:text-[7rem] font-bold leading-tight drop-shadow-lg">
+              Jagannath
+            </h1>
           </div>
 
-          <p className="hero-subtitle" style={{ color: "#fff", fontSize: 17, maxWidth: 520, margin: "0 auto 40px", lineHeight: 1.7, fontWeight: 500, textShadow: "0 0 15px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.5)" }}>
-             Experience the soul of India in every bite — traditional recipes,<br />warm hospitality, and flavors that linger.
+          <div className="hero-subtitle flex items-center justify-center gap-4 mb-6">
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-cream/60" />
+            <span className="text-saffron text-lg">❖</span>
+            <span className="text-cream text-sm tracking-[0.15em] uppercase font-semibold">Authentic Pure Veg Cuisine</span>
+            <span className="text-saffron text-lg">❖</span>
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-cream/60" />
+          </div>
+
+          <p className="hero-subtitle text-cream/90 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+             Experience the soul of India in every bite — traditional recipes,<br className="hidden md:block" />warm hospitality, and flavors that linger.
           </p>  
 
-          <div className="hero-cta-group" style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center", marginBottom: 56 }}>
+          <div className="hero-cta-group flex flex-wrap gap-4 justify-center mb-14">
             <button onClick={() => document.querySelector("#menu")?.scrollIntoView({ behavior: "smooth" })}
-              className="btn-gold" style={{ padding: "14px 32px", fontSize: 13, letterSpacing: "0.05em", boxShadow: "0 0 20px rgba(212,168,67,0.4)" }}>
+              className="btn-maroon px-8 py-3.5 text-sm uppercase tracking-wider font-semibold shadow-md">
               Explore Menu
             </button>
             <a href="https://wa.me/919975260955?text=Hello%20Jai%20Jagannath%20Restaurant!%20I%20would%20like%20to%20reserve%20a%20table.%0A%0ADate%3A%20%0ATime%3A%20%0ATable%20No%3A%20%0AGuests%3A%20"
               target="_blank" rel="noopener noreferrer"
-              style={{ padding: "14px 32px", borderRadius: 9999, fontSize: 13, letterSpacing: "0.05em", border: "1px solid rgba(255,255,255,0.9)", color: "#fff", textDecoration: "none", display: "inline-block", textAlign: "center", transition: "all 0.3s", background: "rgba(255,255,255,0.1)", boxShadow: "0 0 20px rgba(255,255,255,0.1)" }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.25)"; e.currentTarget.style.boxShadow = "0 0 30px rgba(255,255,255,0.3)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; e.currentTarget.style.boxShadow = "0 0 20px rgba(255,255,255,0.1)"; }}
+              className="px-8 py-3.5 rounded-md text-sm uppercase tracking-wider border border-cream/50 text-cream bg-cream/10 hover:bg-cream/20 transition-all font-semibold shadow-md"
             >
               Reserve a Table
             </a>
           </div>
 
-          {/* Stats with a soft background glow to separate them from the image */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "3vw", background: "rgba(0,0,0,0.2)", padding: "20px 40px", borderRadius: "100px", backdropFilter: "blur(5px)", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 0 40px rgba(0,0,0,0.3)" }}>
-            <div className="hero-stats" style={{ textAlign: "center" }}>
-              <div className="stars" style={{ display: "flex", gap: 2, justifyContent: "center", marginBottom: 4, color: "var(--gold)", textShadow: "0 0 10px rgba(212,168,67,0.8)" }}>
-                {[1, 2, 3, 4, 5].map(i => <Star key={i} size={13} fill="currentColor" />)}
+          {/* Stats block */}
+          <div className="hero-stats flex flex-wrap items-center justify-center gap-6 md:gap-12 bg-text-main/70 backdrop-blur-md px-8 py-5 rounded-md border border-border-soft/20 shadow-lg mx-auto w-fit">
+            <div className="text-center">
+              <div className="flex gap-1 justify-center mb-1 text-saffron">
+                {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} fill="currentColor" />)}
               </div>
-              <p style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontWeight: 700, fontSize: 17, margin: "0 0 2px", textShadow: "0 0 10px rgba(255,255,255,0.3)" }}>3.9 / 5</p>
-              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600 }}>Google Rating</p>
+              <p className="font-serif text-cream font-bold text-lg mb-0.5">3.9 / 5</p>
+              <p className="text-cream/70 text-xs tracking-wider uppercase font-medium">Google Rating</p>
             </div>
-            <div style={{ width: 1, height: 40, background: "rgba(255,255,255,0.3)" }} />
-            <div className="hero-stats" style={{ textAlign: "center" }}>
-              <div style={{ color: "var(--gold)", display: "flex", justifyContent: "center", marginBottom: 4, textShadow: "0 0 10px rgba(212,168,67,0.8)" }}><MapPin size={14} /></div>
-              <p style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontWeight: 700, fontSize: 17, margin: "0 0 2px", textShadow: "0 0 10px rgba(255,255,255,0.3)" }}>MG Road</p>
-              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600 }}>Shalimar, Nashik</p>
+            <div className="hidden md:block w-px h-12 bg-cream/20" />
+            <div className="text-center">
+              <div className="flex justify-center mb-1 text-saffron"><MapPin size={16} /></div>
+              <p className="font-serif text-cream font-bold text-lg mb-0.5">MG Road</p>
+              <p className="text-cream/70 text-xs tracking-wider uppercase font-medium">Shalimar, Nashik</p>
             </div>
-            <div style={{ width: 1, height: 40, background: "rgba(255,255,255,0.3)" }} />
-            <div className="hero-stats" style={{ textAlign: "center" }}>
-              <div style={{ color: "var(--gold)", display: "flex", justifyContent: "center", marginBottom: 4, textShadow: "0 0 10px rgba(212,168,67,0.8)" }}><Clock size={14} /></div>
-              <p style={{ fontFamily: "'Playfair Display', serif", color: "#fff", fontWeight: 700, fontSize: 17, margin: "0 0 2px", textShadow: "0 0 10px rgba(255,255,255,0.3)" }}>Open</p>
-              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600 }}>3 PM – 11 PM</p>
+            <div className="hidden md:block w-px h-12 bg-cream/20" />
+            <div className="text-center">
+              <div className="flex justify-center mb-1 text-saffron"><Clock size={16} /></div>
+              <p className="font-serif text-cream font-bold text-lg mb-0.5">Open</p>
+              <p className="text-cream/70 text-xs tracking-wider uppercase font-medium">3 PM – 11 PM</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bouncing chevron */}
-      <button className="scroll-arrow"
+      <button className="scroll-arrow absolute bottom-8 left-1/2 -translate-x-1/2 z-30 text-cream/70 hover:text-cream transition-colors p-2"
         onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}
-        style={{ position: "absolute", bottom: 40, left: "50%", transform: "translateX(-50%)", zIndex: 30, color: "rgba(255,255,255,0.9)", background: "none", border: "none", cursor: "pointer", transition: "all 0.3s", filter: "drop-shadow(0 0 10px rgba(255,255,255,0.5))" }}
-        onMouseEnter={(e) => { e.currentTarget.style.color = "#fff"; e.currentTarget.style.filter = "drop-shadow(0 0 20px rgba(255,255,255,0.8))"; }}
-        onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.9)"; e.currentTarget.style.filter = "drop-shadow(0 0 10px rgba(255,255,255,0.5))"; }}
       >
-        <ChevronDown size={36} />
+        <ChevronDown size={32} />
       </button>
     </div>
   );

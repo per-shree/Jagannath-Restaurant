@@ -59,18 +59,18 @@ export default function Navbar() {
     <nav
       ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "nav-glass py-3 shadow-sm" : "py-5 bg-transparent"
+        scrolled ? "bg-cream border-b border-border-soft py-3 shadow-sm" : "py-5 bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <div className="nav-logo flex items-center gap-3 cursor-pointer" onClick={() => handleNavClick("#home")}>
-          <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-md" style={{ background: "linear-gradient(135deg, var(--gold), var(--gold-dark))" }}>
-            <span className="text-lg font-bold text-white">ॐ</span>
+          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-maroon shadow-sm">
+            <span className="text-lg font-bold text-ivory">ॐ</span>
           </div>
           <div>
-            <p className="text-xs tracking-[0.25em] uppercase leading-none font-semibold" style={{ color: "var(--gold)" }}>Jai</p>
-            <p className="text-lg font-bold leading-tight text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>Jagannath</p>
+            <p className="text-xs tracking-[0.25em] uppercase leading-none font-semibold text-saffron">Jai</p>
+            <p className={`text-lg font-bold leading-tight font-serif ${scrolled ? 'text-maroon-dark' : 'text-cream drop-shadow-md'}`}>Jagannath</p>
           </div>
         </div>
 
@@ -80,8 +80,7 @@ export default function Navbar() {
             <button
               key={link.label}
               onClick={() => handleNavClick(link.href)}
-              className={`nav-item underline-gold text-sm tracking-wider transition-colors duration-300 uppercase font-semibold ${scrolled ? 'text-gray-800' : 'text-white drop-shadow-md'}`}
-              style={scrolled ? {} : { textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
+              className={`nav-item underline-saffron text-sm tracking-wider transition-colors duration-300 uppercase font-medium ${scrolled ? 'text-text-main' : 'text-cream drop-shadow-sm'}`}
             >
               {link.label}
             </button>
@@ -94,7 +93,7 @@ export default function Navbar() {
             href="https://wa.me/919975260955?text=Hello%20Jai%20Jagannath%20Restaurant!%20I%20would%20like%20to%20reserve%20a%20table.%0A%0ADate%3A%20%0ATime%3A%20%0ATable%20No%3A%20%0AGuests%3A%20"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-gold px-5 py-2 rounded-full text-sm inline-block shadow-md"
+            className="btn-maroon px-6 py-2.5 rounded-md text-sm inline-block shadow-sm"
           >
             Reserve Table
           </a>
@@ -102,7 +101,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className={`md:hidden p-2 ${scrolled ? 'text-gray-800' : 'text-white drop-shadow-md'}`}
+          className={`md:hidden p-2 rounded-md hover:bg-border-soft/20 ${scrolled ? 'text-text-main' : 'text-cream'}`}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -111,17 +110,16 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden transition-all duration-500 overflow-hidden ${
-          mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden transition-all duration-300 overflow-hidden bg-ivory border-t border-border-soft shadow-md ${
+          mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 border-none"
         }`}
-        style={{ background: "#FDFBF7", borderTop: "1px solid var(--border)", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}
       >
-        <div className="px-6 py-4 flex flex-col gap-4">
+        <div className="px-6 py-4 flex flex-col gap-2">
           {navLinks.map((link) => (
             <button
               key={link.label}
               onClick={() => handleNavClick(link.href)}
-              className="text-left text-gray-800 hover:text-[var(--gold)] transition-colors text-sm tracking-widest uppercase py-2 font-semibold border-b border-gray-100"
+              className="text-left text-text-main hover:text-maroon transition-colors text-sm tracking-widest uppercase py-3 font-medium border-b border-border-soft/50 last:border-none"
             >
               {link.label}
             </button>
@@ -130,7 +128,7 @@ export default function Navbar() {
             href="https://wa.me/919975260955?text=Hello%20Jai%20Jagannath%20Restaurant!%20I%20would%20like%20to%20reserve%20a%20table.%0A%0ADate%3A%20%0ATime%3A%20%0ATable%20No%3A%20%0AGuests%3A%20"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-gold px-5 py-3 rounded-full text-sm w-full mt-2 inline-block text-center shadow-md"
+            className="btn-maroon px-5 py-3 rounded-md text-sm w-full mt-4 inline-block text-center shadow-sm"
           >
             Reserve Table
           </a>

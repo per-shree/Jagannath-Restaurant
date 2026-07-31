@@ -12,7 +12,7 @@ const specials = [
     price: "₹120",
     tag: "Best Seller",
     image: "https://media.istockphoto.com/id/1437065088/photo/spicy-dal-makhani-or-butter-daal-served-in-a-dish-isolated-on-grey-background-top-view-of.jpg?s=612x612&w=0&k=20&c=lUVmyJkCz7XpD_IctxeI4pf4nkiifZ08Y_w97imzXPc=",
-    accent: "#c0392b",
+    accent: "#7A1F1F",
   },
     {
     name: "Paneer Butter Masala",
@@ -20,7 +20,7 @@ const specials = [
     price: "₹150",
     tag: "Chef's Pick",
     image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80&fit=crop",
-    accent: "#e67e22",
+    accent: "#D99A2B",
   },
     {
     name: "Special Thali",
@@ -28,7 +28,7 @@ const specials = [
     price: "₹80",
     tag: "Popular",
     image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80&fit=crop",
-    accent: "#d4a843",
+    accent: "#571414",
   },
   {
     name: "Chole Bhature",
@@ -36,7 +36,7 @@ const specials = [
     price: "₹100",
     tag: "Favourite",
     image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600&q=80&fit=crop",
-    accent: "#8e44ad",
+    accent: "#7A1F1F",
   },
 ];
 
@@ -51,51 +51,19 @@ export default function SpecialsSection() {
         scrollTrigger: { trigger: ".specials-header", start: "top 85%" },
       });
 
-      // Cards stagger with tilt entrance
+      // Cards stagger entrance
       gsap.from(".special-card", {
-        y: 80, opacity: 0, rotationX: 15, stagger: 0.14, duration: 0.9, ease: "power3.out",
-        transformPerspective: 900,
+        y: 50, opacity: 0, stagger: 0.14, duration: 0.8, ease: "power3.out",
         scrollTrigger: { trigger: ".specials-grid", start: "top 80%" },
       });
 
-      // Image hover zoom on each card
+      // Click ripple
       document.querySelectorAll(".special-card").forEach((card) => {
         const el = card as HTMLElement;
-        const img = el.querySelector(".dish-img") as HTMLElement | null;
-        const shine = el.querySelector(".card-shine") as HTMLElement | null;
-
-        el.addEventListener("mousemove", (e: MouseEvent) => {
-          const rect = el.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width - 0.5) * 18;
-          const y = ((e.clientY - rect.top) / rect.height - 0.5) * 18;
-          const shineX = ((e.clientX - rect.left) / rect.width) * 100;
-          const shineY = ((e.clientY - rect.top) / rect.height) * 100;
-
-          gsap.to(el, {
-            rotateX: -y, rotateY: x, duration: 0.4, ease: "power2.out",
-            transformPerspective: 900,
-          });
-          if (img) gsap.to(img, { scale: 1.08, duration: 0.5, ease: "power2.out" });
-          if (shine) {
-            gsap.to(shine, {
-              opacity: 0.15,
-              background: `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255,255,255,0.4), transparent 60%)`,
-              duration: 0.3,
-            });
-          }
-        });
-
-        el.addEventListener("mouseleave", () => {
-          gsap.to(el, { rotateX: 0, rotateY: 0, duration: 0.6, ease: "elastic.out(1, 0.6)", transformPerspective: 900 });
-          if (img) gsap.to(img, { scale: 1, duration: 0.5, ease: "power2.out" });
-          if (shine) gsap.to(shine, { opacity: 0, duration: 0.4 });
-        });
-
-        // Click ripple
         el.addEventListener("click", () => {
           gsap.fromTo(el,
-            { scale: 0.97 },
-            { scale: 1, duration: 0.4, ease: "elastic.out(1.2, 0.5)" }
+            { scale: 0.98 },
+            { scale: 1, duration: 0.3, ease: "power2.out" }
           );
         });
       });
@@ -108,47 +76,29 @@ export default function SpecialsSection() {
         scrollTrigger: { trigger: ".specials-grid", start: "top 75%" },
       });
 
-      // Floating dish image on scroll for each card
-      document.querySelectorAll(".dish-float-wrap").forEach((el, i) => {
-        gsap.to(el, {
-          y: i % 2 === 0 ? -12 : 8,
-          duration: 2 + i * 0.3,
-          ease: "power1.inOut",
-          repeat: -1,
-          yoyo: true,
-          delay: i * 0.2,
-        });
-      });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} id="specials" className="relative py-28 overflow-hidden bg-[#FDFBF7]">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/10 to-transparent pointer-events-none" />
-
-      {/* Decorative blobs */}
-      <div className="absolute top-1/3 -left-32 w-96 h-96 rounded-full opacity-[0.04] blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, var(--gold), transparent)" }} />
-      <div className="absolute bottom-1/3 -right-32 w-96 h-96 rounded-full opacity-[0.04] blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, #c0392b, transparent)" }} />
+    <section ref={sectionRef} id="specials" className="relative py-28 overflow-hidden bg-cream">
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="specials-header text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-gray-200 bg-gray-50">
-            <span className="text-[var(--gold)] text-xs">✦</span>
-            <span className="text-[var(--gold)] text-xs tracking-[0.3em] uppercase font-medium">Chef's Table</span>
-            <span className="text-[var(--gold)] text-xs">✦</span>
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-border-soft bg-ivory">
+            <span className="text-saffron text-xs">✦</span>
+            <span className="text-saffron text-xs tracking-[0.3em] uppercase font-medium">Chef's Table</span>
+            <span className="text-saffron text-xs">✦</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "var(--gold)" }}>
+          <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4 text-maroon">
             Today's Specials
           </h2>
           <div className="ornament-divider max-w-xs mx-auto my-4">
-            <span className="text-[var(--gold)] text-sm">❖</span>
+            <span className="text-saffron text-sm">❖</span>
           </div>
-          <p className="text-gray-600 max-w-xl mx-auto text-lg">
+          <p className="text-text-sec max-w-xl mx-auto text-lg">
             Handpicked favourites that keep our guests coming back for more.
           </p>
         </div>
@@ -158,50 +108,45 @@ export default function SpecialsSection() {
           {specials.map((item, i) => (
             <div
               key={i}
-              className="special-card relative rounded-2xl border border-gray-200 overflow-hidden bg-card cursor-pointer select-none"
-              style={{ transformStyle: "preserve-3d" }}
+              className="special-card menu-card relative cursor-pointer select-none group"
             >
-              {/* Shine overlay */}
-              <div className="card-shine absolute inset-0 z-30 rounded-2xl opacity-0 pointer-events-none" />
-
               {/* Image */}
-              <div className="dish-float-wrap relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden rounded-t-lg">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="dish-img w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
                 {/* Gradient overlay on image */}
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ivory via-transparent to-transparent opacity-80" />
 
                 {/* Tag badge on image */}
-                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase z-10"
-                  style={{ background: "rgba(255,255,255,0.9)", color: "var(--gold)", border: "1px solid rgba(212,168,67,0.4)", backdropFilter: "blur(8px)" }}>
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase z-10 bg-ivory text-saffron border border-saffron/40 shadow-sm">
                   {item.tag}
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-5">
-                <h3 className="text-xl font-bold text-gray-900 mb-1.5" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <div className="p-5 pb-6">
+                <h3 className="text-xl font-bold text-text-main mb-1.5 font-serif">
                   {item.name}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-5">{item.description}</p>
+                <p className="text-text-sec text-sm leading-relaxed mb-5">{item.description}</p>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold price-tag-anim price-tag" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <span className="text-xl font-bold price-tag-anim font-serif text-maroon-dark">
                     {item.price}
                   </span>
-                  <button className="text-xs px-4 py-2 rounded-full border border-gray-200 text-[var(--gold)] hover:bg-amber-500/15 transition-colors">
+                  <button className="text-xs px-4 py-2 rounded-full border border-border-soft text-maroon hover:bg-maroon/5 transition-colors font-medium">
                     Order Now
                   </button>
                 </div>
               </div>
 
               {/* Bottom accent bar */}
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 opacity-60"
-                style={{ background: `linear-gradient(90deg, transparent, ${item.accent}, transparent)` }} />
+              <div className="absolute bottom-0 left-0 right-0 h-1"
+                style={{ backgroundColor: item.accent }} />
             </div>
           ))}
         </div>

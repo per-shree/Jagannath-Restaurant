@@ -84,8 +84,6 @@ export default function GallerySection() {
             },
           });
         }
-        
-        // Removed GSAP hover listeners in favor of much more reliable Tailwind CSS group-hover classes
       });
 
       // Infinite horizontal marquee
@@ -107,22 +105,22 @@ export default function GallerySection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="gallery" className="relative py-28 overflow-hidden bg-[#FDFBF7]">
+    <section ref={sectionRef} id="gallery" className="relative py-28 overflow-hidden bg-cream">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="gallery-header text-center mb-14">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-gray-200 bg-gray-50">
-            <span className="text-[var(--gold)] text-xs">✦</span>
-            <span className="text-[var(--gold)] text-xs tracking-[0.3em] uppercase font-medium">Gallery</span>
-            <span className="text-[var(--gold)] text-xs">✦</span>
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-border-soft bg-ivory">
+            <span className="text-saffron text-xs">✦</span>
+            <span className="text-saffron text-xs tracking-[0.3em] uppercase font-medium">Gallery</span>
+            <span className="text-saffron text-xs">✦</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "var(--gold)" }}>
+          <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4 text-maroon">
             A Visual Feast
           </h2>
           <div className="ornament-divider max-w-xs mx-auto my-4">
-            <span className="text-[var(--gold)] text-sm">❖</span>
+            <span className="text-saffron text-sm">❖</span>
           </div>
-          <p className="text-gray-600 max-w-xl mx-auto">
+          <p className="text-text-sec max-w-xl mx-auto">
             Every dish tells a story — crafted with tradition, served with love.
           </p>
         </div>
@@ -145,8 +143,8 @@ export default function GallerySection() {
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)" }}>
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-75">
-                  <p className="text-white font-bold text-xl mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>{item.label}</p>
-                  <p className="text-[var(--gold)] text-xs tracking-wider uppercase font-semibold">Jai Jagannath Restaurant</p>
+                  <p className="text-white font-bold text-xl mb-1 font-serif">{item.label}</p>
+                  <p className="text-saffron text-xs tracking-wider uppercase font-semibold">Jai Jagannath Restaurant</p>
                 </div>
               </div>
 
@@ -154,7 +152,7 @@ export default function GallerySection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
 
               {/* Gold border on hover */}
-              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[var(--gold)]/50 transition-colors duration-500 pointer-events-none" />
+              <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-saffron/50 transition-colors duration-500 pointer-events-none" />
             </div>
           ))}
         </div>
@@ -174,7 +172,7 @@ export default function GallerySection() {
       </div>
 
       {/* Bottom label */}
-      <p className="text-center text-gray-500 text-xs tracking-widest uppercase mt-8 font-medium">
+      <p className="text-center text-text-sec text-xs tracking-widest uppercase mt-8 font-medium">
         ✦ Authentic Indian Cuisine · MG Road, Shalimar, Nashik ✦
       </p>
     </section>
